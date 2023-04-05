@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Firebase.Auth.Providers;
+using Firebase.Auth.Repository;
+using Firebase.Auth;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +18,38 @@ namespace Sohbet_Uygulaması
         public Login()
         {
             InitializeComponent();
+        }
+
+        private async void GirisYBtn_Click(object sender, EventArgs e)
+        {
+            // Configure...
+            var config = new FirebaseAuthConfig
+            {
+                ApiKey = "AIzaSyB4wf1T7rZ7-TXqFDt8I4bG4j7LH_7VtBk",
+                AuthDomain = "sohbet-uygulamasi-enserdogan0.firebaseapp.com",
+                Providers = new FirebaseAuthProvider[]
+                {
+        // Add and configure individual providers
+        new GoogleProvider().AddScopes("email"),
+        new EmailProvider()
+                    // ...
+                },
+
+                // WPF:
+                //UserRepository = new FileUserRepository("FirebaseSample") // persist data into %AppData%\FirebaseSample
+                // UWP:
+                //UserRepository = new StorageRepository() // persist data into ApplicationDataContainer
+            };
+
+            // ...and create your FirebaseAuthClient
+            var client = new FirebaseAuthClient(config);
+            var userCredential = await client.SignInWithEmailAndPasswordAsync("sedeneme12329@gmail.com", "deneme12");
+            var user = userCredential.User;
+            var uid = user.Uid;
+            var name = user.Info.DisplayName; // more properties are available in user.Info
+            var refreshToken = user.Credential.RefreshToken; // more properties are available in user.Credential
+
+            label1.Text = "Hoş geldin \n" + user.Info + "!UID\n: " + user.Uid;
         }
     }
 }
