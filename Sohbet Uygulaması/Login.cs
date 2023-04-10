@@ -47,5 +47,15 @@ namespace Sohbet_Uygulaması
 
             label1.Text = "Hoş geldin  \n" + user.Info + "!UID\n: " + user.Uid;
         }
+
+        private void KullaniciTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SifreTB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
