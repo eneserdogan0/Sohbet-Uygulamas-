@@ -18,6 +18,7 @@ namespace Sohbet_Uygulaması
         public Login()
         {
             InitializeComponent();
+            //InitializeFirebase();
         }
 
         private async void GirisYBtn_Click(object sender, EventArgs e)
@@ -33,12 +34,7 @@ namespace Sohbet_Uygulaması
         new GoogleProvider().AddScopes("email"),
         new EmailProvider()
                     // ...
-                },
-
-                // WPF:
-                //UserRepository = new FileUserRepository("FirebaseSample") // persist data into %AppData%\FirebaseSample
-                // UWP:
-                //UserRepository = new StorageRepository() // persist data into ApplicationDataContainer
+                },          
             };
 
             // ...and create your FirebaseAuthClient
@@ -49,7 +45,7 @@ namespace Sohbet_Uygulaması
             var name = user.Info.DisplayName; // more properties are available in user.Info
             var refreshToken = user.Credential.RefreshToken; // more properties are available in user.Credential
 
-            label1.Text = "Hoş geldin \n" + user.Info + "!UID\n: " + user.Uid;
+            label1.Text = "Hoş geldin  \n" + user.Info + "!UID\n: " + user.Uid;
         }
     }
 }
