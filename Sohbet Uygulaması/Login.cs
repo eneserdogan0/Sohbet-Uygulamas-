@@ -15,37 +15,27 @@ namespace Sohbet_Uygulaması
 {
     public partial class Login : Form
     {
-        public Login()
+        private string AuthDomain;
+        private string ApiKey;
+        public Login(string AuthDomain, string ApiKey)
         {
             InitializeComponent();
             //InitializeFirebase();
+            this.AuthDomain = AuthDomain;
+            this.ApiKey = ApiKey;
         }
 
-        private async void GirisYBtn_Click(object sender, EventArgs e)
+        private void GirisYBtn_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(AuthDomain, ApiKey);
             // Configure...
-            var config = new FirebaseAuthConfig
-            {
-                ApiKey = "AIzaSyB4wf1T7rZ7-TXqFDt8I4bG4j7LH_7VtBk",
-                AuthDomain = "sohbet-uygulamasi-enserdogan0.firebaseapp.com",
-                Providers = new FirebaseAuthProvider[]
-                {
-        // Add and configure individual providers
-        new GoogleProvider().AddScopes("email"),
-        new EmailProvider()
-                    // ...
-                },          
-            };
+            //var config = new FirebaseAuthConfig
+            //{
+                
+                     
+            //};
 
-            // ...and create your FirebaseAuthClient
-            var client = new FirebaseAuthClient(config);
-            var userCredential = await client.SignInWithEmailAndPasswordAsync("sedeneme12329@gmail.com", "deneme12");
-            var user = userCredential.User;
-            var uid = user.Uid;
-            var name = user.Info.DisplayName; // more properties are available in user.Info
-            var refreshToken = user.Credential.RefreshToken; // more properties are available in user.Credential
-
-            label1.Text = "Hoş geldin  \n" + user.Info + "!UID\n: " + user.Uid;
+            //label1.Text = "Hoş geldin  \n" + user.Info + "!UID\n: " + user.Uid;
         }
 
         private void KullaniciTB_TextChanged(object sender, EventArgs e)

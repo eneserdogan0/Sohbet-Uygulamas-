@@ -85,7 +85,7 @@
             this.KullaniciTB.Name = "KullaniciTB";
             this.KullaniciTB.Size = new System.Drawing.Size(171, 27);
             this.KullaniciTB.TabIndex = 4;
-            this.KullaniciTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.KullaniciTB.TextChanged += new System.EventHandler(this.KullaniciTB_TextChanged);
             // 
             // label4
             // 
@@ -104,7 +104,7 @@
             this.SifreTB.Name = "SifreTB";
             this.SifreTB.Size = new System.Drawing.Size(171, 26);
             this.SifreTB.TabIndex = 6;
-            this.SifreTB.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.SifreTB.TextChanged += new System.EventHandler(this.SifreTB_TextChanged);
             // 
             // Login
             // 
